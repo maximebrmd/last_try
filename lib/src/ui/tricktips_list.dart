@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import '../models/item_model.dart';
-import '../blocs/movies_bloc.dart';
+import '../models/trickTips_model.dart';
+import '../blocs/trickTips_bloc.dart';
 
-class MovieList extends StatelessWidget {
+class TrickTipsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    bloc.fetchAllMovies();
+    trickTipsBloc.fetchAllTrickTips();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Popular Movies'),
+        title: Text('TrickTips'),
       ),
       body: StreamBuilder(
-        stream: bloc.allMovies,
-        builder: (context, AsyncSnapshot<ItemModel> snapshot) {
+        stream: trickTipsBloc.allTrickTips,
+        builder: (context, AsyncSnapshot<List<TrickTipsModel>> snapshot) {
           if (snapshot.hasData) {
             return buildList(snapshot);
           } else if (snapshot.hasError) {
@@ -24,16 +24,13 @@ class MovieList extends StatelessWidget {
     );
   }
 
-  Widget buildList(AsyncSnapshot<ItemModel> snapshot) {
+  Widget buildList(AsyncSnapshot<List<TrickTipsModel>> snapshot) {
     return GridView.builder(
-        itemCount: snapshot.data.results.length,
+        itemCount: snapshot.data.length,
         gridDelegate:
             new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
-          return Image.network(
-            'https://image.tmdb.org/t/p/w185${snapshot.data.results[index].posterPath}',
-            fit: BoxFit.cover,
-          );
+          return Text(snapshot.data[index].title);
         });
   }
 }

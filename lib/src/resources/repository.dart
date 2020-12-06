@@ -1,9 +1,14 @@
 import 'dart:async';
-import 'movie_api_provider.dart';
-import '../models/item_model.dart';
+
+// Import providers
+import 'trickTips_provider.dart';
+
+// Import models
+import '../models/trickTips_model.dart';
 
 class Repository {
-  final moviesApiProvider = MovieApiProvider();
+  final trickTipsProvider = TrickTipsProvider();
 
-  Future<ItemModel> fetchAllMovies() => moviesApiProvider.fetchMovieList();
+  Future<List<TrickTipsModel>> fetchAllTrickTips() =>
+      trickTipsProvider.fetchTrickTipsList();
 }

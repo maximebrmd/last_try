@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:universal_html/html.dart';
-import 'ui/movie_list.dart';
+import 'ui/tricktips_list.dart';
 import '../generated/l10n.dart';
 
 class App extends StatelessWidget {
@@ -26,7 +26,7 @@ class App extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       home: Scaffold(
-        body: MovieList(),
+        body: TrickTipsList(),
       ),
     );
   }
