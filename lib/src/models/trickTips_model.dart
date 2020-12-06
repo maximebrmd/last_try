@@ -1,6 +1,14 @@
+import 'package:flutter/foundation.dart';
+
 enum TrickTipsCategory { Flat, Grind, Transition }
 
 enum TrickTipsLevel { Beginner, Advance, Expert }
+
+extension EnumExtension on String {
+  T toEnum<T>(Iterable<T> values, String value) => values.firstWhere(
+      (d) => describeEnum(d).toLowerCase() == value.toLowerCase(),
+      orElse: () => null);
+}
 
 class TrickTipsModel {
   int id;
@@ -18,8 +26,8 @@ class TrickTipsModel {
     title = json['title'];
     description = json['description'];
     url = json['url'];
-    category = json['category'];
-    level = json['level'];
+    category = json['category'].toEnum<TrickTipsCategory>();
+    level = json['level'].toEnum<TrickTipsLevel>();
     for (int i = 0; i < json['sequence'].length; i++) {
       sequence.add(json['sequence'][i]);
     }
@@ -34,8 +42,8 @@ class TrickTipsModel {
         "title": title,
         "description": description,
         "url": url,
-        "category": category.toString(),
-        "level": level.toString(),
+        "category": category.toString().toLowerCase(),
+        "level": level.toString().toLowerCase(),
         "sequence": sequence,
         "descriptionStep": descriptionStep,
         "totalStep": totalStep,
