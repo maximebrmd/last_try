@@ -10,5 +10,5 @@ class Repository {
   final trickTipsProvider = TrickTipsProvider();
 
   Future<List<TrickTipsModel>> fetchAllTrickTips() =>
-      trickTipsProvider.fetchTrickTipsList();
+      trickTipsProvider.fetchAllTrickTips();
 }

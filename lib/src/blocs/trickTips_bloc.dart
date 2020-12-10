@@ -1,21 +1,26 @@
+import 'dart:async';
+
 import '../resources/repository.dart';
-import 'package:rxdart/rxdart.dart';
 import '../models/trickTips_model.dart';
+import 'bloc.dart';
 
-class TrickTipsBloc {
+class TrickTipsBloc implements Bloc {
   final _repository = Repository();
-  final _trickTipsFetcher = PublishSubject<List<TrickTipsModel>>();
+  final _trickTipsController = StreamController<List<TrickTipsModel>>();
 
-  Stream<List<TrickTipsModel>> get allTrickTips => _trickTipsFetcher.stream;
+  Stream<List<TrickTipsModel>> get trickTipsStream =>
+      _trickTipsController.stream;
 
   fetchAllTrickTips() async {
-    List<TrickTipsModel> trickTipsModel = await _repository.fetchAllTrickTips();
-    _trickTipsFetcher.sink.add(trickTipsModel);
+    List<TrickTipsModel> _trickTipsModel = List<TrickTipsModel>();
+
+    _trickTipsModel = await _repository.fetchAllTrickTips();
+
+    _trickTipsController.sink.add(_trickTipsModel);
   }
 
+  @override
   dispose() {
-    _trickTipsFetcher.close();
+    _trickTipsController.close();
   }
 }
-
-final trickTipsBloc = TrickTipsBloc();
