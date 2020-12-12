@@ -54,7 +54,7 @@ class TrickTipsModel {
         descriptionStep.add(v);
       });
     }
-    totalStep = descriptionStep.length;
+    //totalStep = descriptionStep.length;
   }
 
   Map<String, dynamic> toJson() => {

@@ -11,7 +11,7 @@ class TrickTipsProvider {
     // TODO : Setup URL for Prod & Dev
     final response = await client.get(
       "http://10.0.2.2:8080/api/v1.0/trickTips/",
-//      "http://localhost:8080/api/v1.0/trickTips/",
+//    "http://localhost:8080/api/v1.0/trickTips/",
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',

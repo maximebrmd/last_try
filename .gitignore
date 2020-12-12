@@ -5,6 +5,8 @@
 .vscode
 
 # Files and directories created by pub
+.gradle
+gradle/
 .dart_tool/
 .packages
 build/

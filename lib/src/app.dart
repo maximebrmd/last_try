@@ -25,8 +25,12 @@ class App extends StatelessWidget {
           ? Locale.fromSubtags(
               languageCode: Intl.canonicalizedLocale(window.navigator.language))
           : null,
-      theme: ThemeData.light(),
+      theme: ThemeData.light().copyWith(
+        primaryColor: Color.fromARGB(255, 56, 51, 139),
+        accentColor: Color.fromARGB(255, 249, 249, 252),
+      ),
       darkTheme: ThemeData.dark(),
+      //themeMode: ThemeMode.dark,
       // TODO: Navbar
       home: BlocProvider<TrickTipsBloc>(
         bloc: TrickTipsBloc(),
