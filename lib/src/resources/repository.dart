@@ -9,6 +9,6 @@ import '../models/trickTips_model.dart';
 class Repository {
   final trickTipsProvider = TrickTipsProvider();
 
-  Future<List<TrickTipsModel>> fetchAllTrickTips() =>
-      trickTipsProvider.fetchAllTrickTips();
+  Future<List<TrickTipsModel>> fetchAllTrickTips(Map<String, String> params) =>
+      trickTipsProvider.fetchAllTrickTips(params);
 }

@@ -2,6 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'gradient_icon.dart';
+
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
@@ -43,9 +45,17 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             alignment: Alignment.center,
             transform: Matrix4.rotationY(math.pi),
             child: IconButton(
-              icon: Icon(
+              icon: GradientIcon(
                 Icons.short_text,
-                color: Theme.of(context).primaryColor,
+                IconTheme.of(context).size,
+                LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Theme.of(context).primaryColor,
+                    Color.fromARGB(255, 115, 100, 241)
+                  ],
+                ),
               ),
               onPressed: () {
                 // open nav menu (profil, setting & log out)

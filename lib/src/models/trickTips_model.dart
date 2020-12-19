@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 enum TrickTipsCategory { Flat, Grind, Transition }
 
-enum TrickTipsLevel { Beginner, Advance, Expert }
+enum TrickTipsLevel { Beginner, Advanced, Experts }
 
 class TrickTipsModel {
   String id;
@@ -54,7 +54,7 @@ class TrickTipsModel {
         descriptionStep.add(v);
       });
     }
-    //totalStep = descriptionStep.length;
+    totalStep = descriptionStep.length;
   }
 
   Map<String, dynamic> toJson() => {

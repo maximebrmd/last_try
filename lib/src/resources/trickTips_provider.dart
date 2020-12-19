@@ -7,16 +7,18 @@ import '../models/trickTips_model.dart';
 class TrickTipsProvider {
   http.Client client = http.Client();
 
-  Future<List<TrickTipsModel>> fetchAllTrickTips() async {
-    // TODO : Setup URL for Prod & Dev
-    final response = await client.get(
-      "http://10.0.2.2:8080/api/v1.0/trickTips/",
-//    "http://localhost:8080/api/v1.0/trickTips/",
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    );
+  Future<List<TrickTipsModel>> fetchAllTrickTips(
+      Map<String, String> params) async {
+    final headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    };
+
+    Uri uri = Uri.parse("http://10.0.2.2:8080/api/v1.0/trickTips/");
+
+    uri = uri.replace(queryParameters: params);
+
+    final response = await http.get(uri, headers: headers);
 
     return parseResponse(response);
   }

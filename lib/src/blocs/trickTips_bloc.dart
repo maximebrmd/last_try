@@ -14,7 +14,22 @@ class TrickTipsBloc implements Bloc {
   fetchAllTrickTips() async {
     List<TrickTipsModel> _trickTipsModel = List<TrickTipsModel>();
 
-    _trickTipsModel = await _repository.fetchAllTrickTips();
+    var params = {"sort": '{"title": 1}'};
+
+    _trickTipsModel = await _repository.fetchAllTrickTips(params);
+
+    _trickTipsController.sink.add(_trickTipsModel);
+  }
+
+  fetchTrickTipsByTitle(String title) async {
+    List<TrickTipsModel> _trickTipsModel = List<TrickTipsModel>();
+
+    var params = {
+      "filters": '{"title": {"\$regex" : "$title", "\$options": "i"} }',
+      "sort": '{"title": 1}'
+    };
+
+    _trickTipsModel = await _repository.fetchAllTrickTips(params);
 
     _trickTipsController.sink.add(_trickTipsModel);
   }

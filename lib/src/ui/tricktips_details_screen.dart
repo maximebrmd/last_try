@@ -78,7 +78,8 @@ class TrickTipsDetailsScreen extends StatelessWidget {
           child: ShadowIconButton(
             backgroundColor: Colors.white,
             iconColor: Theme.of(context).primaryColor,
-            icon: Icons.favorite,
+            icon: Icons
+                .favorite_border, // Icons.favorite = true, Icons.favorite_border = false
             iconPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             onPressed: (context) => {print("Call API to insert user favorite")},
           ),
